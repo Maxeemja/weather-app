@@ -9,8 +9,8 @@ import location from '../../assets/loc.png';
 
 const CityInfo = ({toggleTabs, cityId, tempMeasure}) => {
 
-    const { isLoading, data: city, isFetching, isPreviousData, isError, isStale } = useQuery(["city", cityId],  () =>
-    fetch(`location/${cityId}/`).then((res) => res.json()).then(res => _transformData(res)));
+    const { isLoading, data: city, isFetching, isSuccess, isError, isStale } = useQuery(["city", cityId],  () =>
+    fetch(`location/${cityId}/`).then((res) => res.json()).then(res =>  _transformData(res)));
     
     const {getMonth, getWeekDay, day} = useGetDate();
 

@@ -1,7 +1,6 @@
 .city__search {
     display: none;
     padding: 0 46px;
-    position: relative;
     .close {
         width: 40px;
         height: 40px;
@@ -16,7 +15,6 @@
     }
     form.search-form {
         position: relative;
-        display: block;
         margin-top: 45px;
         i {
             position: absolute;
@@ -25,7 +23,7 @@
             color: #616475;
         }
         input {
-            width: 270px;
+            width: 268px;
             height: 48px;
             border: 1px solid #E7E7EB;
             padding: 15px 15px 15px 34px;
@@ -36,8 +34,8 @@
             background: #1E213A;
         }
         button {
-            margin-left: 12px;
-            width: 86px;
+            margin-left: 10px;
+            width: 85px;
             height: 48px;
             background: #3C47E9;
             border: none;
@@ -79,6 +77,13 @@
                 display: none;
             }
         }
+    }
+    .no-results {
+        color: #616475;
+        margin-top: 30px;
+        font-weight: 600;
+        font-size: 18px;
+        margin-left: 15px;
     }
     
 }

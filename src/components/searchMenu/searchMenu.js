@@ -21,7 +21,7 @@ const SearchMenu = ({setCity, toggleTabs}) => {
         const ico = document.querySelector('form > i');
         inputValue !== '' ? ico.style.display = "none" : ico.style.display = "block"  
     }
-
+    if(isSuccess) console.log(data)
     return (
         <div className="city__search">
             <div className="close" onClick={() => {toggleTabs('info'); setSearchWord('')}}>&times;</div>
@@ -30,19 +30,19 @@ const SearchMenu = ({setCity, toggleTabs}) => {
                 <input onChange={toggleIco} placeholder="search" type="text" name="cityName"/>
                 <button type="submit" disabled={isLoading}>Search</button>
             </form>
-            {isLoading || isFetching ? <Spinner/> : null} 
-
-            <div className="city__search_results">
-                {isSuccess ? data.slice(0, 3).map(el => 
-                <li 
-                    className="city__search_results-item" 
-                    key={el.woeid} 
-                    id={el.woeid}
-                    onClick={(e) => {setCity(e.target.id); toggleTabs('info')}}
-                    >{el.title}<i className="fas fa-chevron-right"></i>
-                </li>) 
-                : isSuccess && data.length < 1 ? <div>No city found...</div> : null}
-            </div>
+            {isLoading  ? <Spinner/> : null} 
+            {isSuccess && data.length > 0 ? 
+                <div className="city__search_results">
+                    {data.slice(0, 3).map(el => 
+                    <li 
+                        className="city__search_results-item" 
+                        key={el.woeid} 
+                        id={el.woeid}
+                        onClick={(e) => {setCity(e.target.id); toggleTabs('info'); setSearchWord('')}}
+                        >{el.title}<i className="fas fa-chevron-right"></i>
+                    </li>)}    
+                </div>: null}
+            {isSuccess && data.length < 1 ? <div className="no-results">No city found</div> : null}
             
             {isError ? <div>Something is wrong</div> : null}
             

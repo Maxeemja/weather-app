@@ -2,8 +2,8 @@ const useGetDate = () => {
     const today = new Date();
     const day = today.getUTCDate();
     const month = today.getUTCMonth();
-    const getWeekDay = () => { 
-        switch (today.getUTCDay()) {
+    const getWeekDay = (day = today.getUTCDay()) => { 
+        switch (day) {
             case 1:
                 return 'Mon';
             case 2:
@@ -16,7 +16,7 @@ const useGetDate = () => {
                 return 'Fri';
             case 6:
                 return 'Sat';
-            case 7:
+            case 0:
                 return 'Sun';
             default:
                 return 'Error'
