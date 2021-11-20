@@ -1,12 +1,12 @@
 
 import './subHeader.scss';
 
-const SubHeader = () => {
+const SubHeader = ({tempMeasure, setTempMeasure}) => {
 
     return (
         <div className="subheader">
-            <div className="celsius-btn">°C</div>
-            <div className="fahrengeit-btn">°F</div>
+            <div onClick={() => setTempMeasure('celsius')} className={`celsius-btn${tempMeasure === 'celsius' ? ' active' : ''}`}>°C</div>
+            <div onClick={() => setTempMeasure('fahrengeit')} className={`fahrengeit-btn${tempMeasure === 'fahrengeit' ? ' active' : ''}`}>°F</div>
         </div>
     )
 }

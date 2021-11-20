@@ -13,7 +13,7 @@ const HighlightsBlock = ({highlights}) => {
                 <div className="highlights__grid-item">
                     <div className="label">Wind status</div>
                     <div className="content">
-                        <div className="count">{`${highlights.wind.speed} mph`}</div>
+                        <div className="count">{highlights.wind.speed}<span> mph</span></div>
                         <div className="direction">
                             <i className="far fa-compass"></i>
                             {highlights.wind.direction}
@@ -23,7 +23,7 @@ const HighlightsBlock = ({highlights}) => {
                 <div className="highlights__grid-item">
                     <div className="label">Humidity</div>
                     <div className="content">
-                        <div className="count">{`${highlights.humidity} %`}</div>
+                        <div className="count">{highlights.humidity}<span> %</span></div>
                         <div className="bar_block">
                             <div className="limits">
                                 <span>0</span><span>50</span><span>100</span>
@@ -38,13 +38,13 @@ const HighlightsBlock = ({highlights}) => {
                 <div className="highlights__grid-item">
                     <div className="label">Visibility</div>
                     <div className="content">
-                        <div className="count">{`${highlights.visibility} miles`}</div>
+                        <div className="count">{highlights.visibility}<span> miles</span></div>
                     </div>
                 </div>
                 <div className="highlights__grid-item">
                     <div className="label">Air pressure</div>
                     <div className="content">
-                        <div className="count">{`${highlights.pressure} mb`}</div>
+                        <div className="count">{highlights.pressure}<span> mb</span></div>
                     </div>
                 </div>
             </div>

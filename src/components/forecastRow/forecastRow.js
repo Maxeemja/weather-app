@@ -3,7 +3,7 @@ import Spinner from "../spinner/Spinner";
 import useGetDate from '../../hooks/useGetDate';
 import './forecastRow.scss';
 
-const ForecastRow = ({cityId, weather}) => {
+const ForecastRow = ({cityId, weather, tempMeasure, convertToFahrengeit}) => {
 
     
 
@@ -21,8 +21,8 @@ const ForecastRow = ({cityId, weather}) => {
                                 <img src={`https://www.metaweather.com/static/img/weather/${el.weather_state_abbr}.svg`} alt="" />
                             </div>
                             <div className="forecast-item_temps">
-                                {`${Math.floor(el.max_temp)}°C`}
-                                <span>{`${Math.floor(el.min_temp)}°C`}</span>
+                                {tempMeasure === 'celsius' ? Math.floor(el.max_temp) + '°C' : convertToFahrengeit(Math.floor(el.max_temp))}
+                                <span>{tempMeasure === 'celsius' ? Math.floor(el.min_temp) + '°C' : convertToFahrengeit(Math.floor(el.min_temp))}</span>
                             </div>
                         </li>})
             }

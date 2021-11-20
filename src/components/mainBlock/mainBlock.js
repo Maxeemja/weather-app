@@ -4,7 +4,7 @@ import SearchMenu from "../searchMenu/searchMenu";
 import CityInfo from "../cityInfo/cityInfo";
 import Spinner from "../spinner/Spinner"
 import './mainBlock.scss';
-const MainBlock = ({city, setCity, tempMeasure}) => {
+const MainBlock = ({city, setCity, tempMeasure, convertToFahrengeit}) => {
 
     const toggleTabs = (tab) => {
         const menu = document.querySelector('.city__search');
@@ -20,7 +20,7 @@ const MainBlock = ({city, setCity, tempMeasure}) => {
 
     return (
         <div className="main__block">
-            <CityInfo toggleTabs={toggleTabs} cityId={city} tempMeasure={tempMeasure}/>
+            <CityInfo toggleTabs={toggleTabs} cityId={city} tempMeasure={tempMeasure} convertToFahrengeit={convertToFahrengeit}/>
             <SearchMenu toggleTabs={toggleTabs} setCity={setCity}/>
         </div>
     )

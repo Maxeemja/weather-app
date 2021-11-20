@@ -7,10 +7,10 @@ import loc from '../../assets/location.png';
 import location from '../../assets/loc.png';
 
 
-const CityInfo = ({toggleTabs, cityId, tempMeasure}) => {
+const CityInfo = ({toggleTabs, cityId, tempMeasure, convertToFahrengeit}) => {
 
     const { isLoading, data: city, isFetching, isSuccess, isError, isStale } = useQuery(["city", cityId],  () =>
-    fetch(`location/${cityId}/`).then((res) => res.json()).then(res =>  _transformData(res)));
+    fetch(`https://aqueous-escarpment-53635.herokuapp.com/https://www.metaweather.com/api/location/${cityId}/`).then((res) => res.json()).then(res =>  _transformData(res)));
     
     const {getMonth, getWeekDay, day} = useGetDate();
 
@@ -39,7 +39,7 @@ const CityInfo = ({toggleTabs, cityId, tempMeasure}) => {
             </div>
             <div className="city__info_weather">
                 <div className="city__info_weather-temp">
-                    {city.temp}
+                    {tempMeasure === 'celsius' ? city.temp : convertToFahrengeit(city.temp).slice(0, -2)}
                     <span className="measure">{tempMeasure === 'celsius' ? '°C' : '°F'}</span>
                 </div>
                 <div className="city__info_weather-state">{city.state}</div>

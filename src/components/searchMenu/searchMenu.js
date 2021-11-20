@@ -14,14 +14,13 @@ const SearchMenu = ({setCity, toggleTabs}) => {
     }
 
     const { isLoading, data, isFetching, isSuccess, isError } = useQuery(["cities", searchWord],  () =>
-    fetch(`location/search/?query=${searchWord}`).then((res) => res.json()), {enabled: searchWord.length > 0})
+    fetch(`https://aqueous-escarpment-53635.herokuapp.com/https://www.metaweather.com/api/location/search/?query=${searchWord}`).then((res) => res.json()), {enabled: searchWord.length > 0})
     
     const toggleIco = () => {
         let inputValue = document.querySelector('.search-form > input').value;    
         const ico = document.querySelector('form > i');
         inputValue !== '' ? ico.style.display = "none" : ico.style.display = "block"  
     }
-    if(isSuccess) console.log(data)
     return (
         <div className="city__search">
             <div className="close" onClick={() => {toggleTabs('info'); setSearchWord('')}}>&times;</div>

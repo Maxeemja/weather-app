@@ -8,19 +8,19 @@
     }
     &__grid {
         display: grid;
-        justify-content: space-around;
         grid-template-columns: repeat(2, minmax(280px, 1fr));
         grid-template-rows: repeat(auto-fill, minmax(160px, 1fr));
         column-gap: 70px;
         row-gap: 45px;
         &-item {
             border-radius: 5px;
-            padding: 22px 70px 38px 70px;
+            padding: 22px 50px 38px 50px;
             text-align: center;
             
             background: #1E213A;
             .label {font-size: 16px; margin-bottom: 10px;}
             .content{
+                span { font-size: 32px; }
                 .count {
                     font-weight: bold;
                     font-size: 64px;
@@ -51,6 +51,7 @@
                         margin-bottom: 5px;
                         &-line {
                             background: #FFEC65;
+                            border-radius: 80px;
                             height: 8px;
                         }
                     }

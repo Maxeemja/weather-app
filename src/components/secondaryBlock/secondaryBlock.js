@@ -7,10 +7,10 @@ import './secondaryBlock.scss';
 import HighlightsBlock from '../highlightsBlock/highligtsBlock';
 import Spinner from "../spinner/Spinner";
 
-const SecondaryBlock = ({cityId, tempMeasure, setTempMeasure}) => {
+const SecondaryBlock = ({cityId, tempMeasure, setTempMeasure, convertToFahrengeit}) => {
 
     const { isLoading, data, isFetching, isError, isSuccess } = useQuery(["forecast", cityId],  () =>
-    fetch(`location/${cityId}/`).then((res) => res.json()).then(res => _transformData(res)));  
+    fetch(`https://aqueous-escarpment-53635.herokuapp.com/https://www.metaweather.com/api/location/${cityId}/`).then((res) => res.json()).then(res => _transformData(res)));  
 
     const _transformData = (data) => {
         return {
@@ -32,7 +32,7 @@ const SecondaryBlock = ({cityId, tempMeasure, setTempMeasure}) => {
     return(
         <div className="secondary__block">
             <SubHeader tempMeasure={tempMeasure} setTempMeasure={setTempMeasure}/>
-            <ForecastRow cityId={cityId} weather={data.weather}/>
+            <ForecastRow cityId={cityId} weather={data.weather} tempMeasure={tempMeasure} convertToFahrengeit={convertToFahrengeit}/>
             <HighlightsBlock cityId={cityId} highlights={data.highlights}/>
             <Footer/>
         </div>

@@ -1,0 +1,110 @@
+@media (max-width: 991px) {
+    .app {
+        display: block;
+    }
+    .main__block {
+        width: 100%;
+        .city__info {
+            &_imgs {
+                height: 340px;
+                .background {
+                    background-size: 110%; 
+                }
+            }
+            &_weather {
+                &-temp {
+                    margin-top: 0;
+                }
+                &-state {
+                    margin-top: 20px;
+                }
+            }
+            &_date {
+                margin-top: 25px;
+            }
+        }
+        .city__search {
+            form.search-form {
+                display: flex;
+                justify-content: center;
+                i {
+                    left: 280px
+                }
+            } 
+        }
+    }
+    .secondary__block {
+        padding: 8%;
+        .subheader {
+            display: none;
+        }
+        .forecast {
+            margin-top: 0;
+        }
+    }
+    
+}
+
+@media (max-width: 768px) {
+    .secondary__block {
+        .forecast {
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr) );
+            column-gap: 25px;
+        }
+    }
+    .main__block {
+        .city__search {
+            form.search-form {
+                i {
+                    left: 170px
+                }
+            } 
+        }
+    }
+}
+
+@media (max-width: 425px){
+    .main__block {
+        height: 100vh;
+        padding: 20px 0;
+        .city__info {
+            &_search {
+                &-btn {margin-left: 12px;}
+                &-currLoc {margin-right: 12px;}
+            }
+            &_imgs {
+                height: 300px;
+                .background {
+                    background-size: auto; 
+                }
+            }
+            &_weather {
+                &-temp {
+                    line-height: 144px;
+                }
+            }
+        }
+        .city__search {
+            padding: 0 30px;
+            form.search-form {
+                i {
+                    left: 16px
+                }
+            } 
+        }
+    }
+    .secondary__block {
+        padding: 52px 24px 100px 24px;
+        .forecast {
+            padding: 0 30px;
+        }
+        .highlights {
+            &__header {
+                margin-top: 50px;
+            }
+            &__grid {
+                grid-template-columns: minmax(270px, 1fr);
+            }
+        }
+    }
+}
