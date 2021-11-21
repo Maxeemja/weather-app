@@ -15,10 +15,9 @@ const App = () => {
           },
         },
     })
-
-    const [cityId, setCityId] = useState(924938)
+    
+    const [cityId, setCityId] = useState()
     const [tempMeasure, setTempMeasure] = useState('celsius')
-
     const convertToFahrengeit = (value) => {
         return `${(value * 1.8 + 32).toFixed(0)}°F`;
     }
@@ -30,12 +29,14 @@ const App = () => {
                     city={cityId} 
                     convertToFahrengeit={convertToFahrengeit} 
                     setCity={setCityId} 
-                    tempMeasure={tempMeasure} />
+                    tempMeasure={tempMeasure}
+                    />
                 <SecondaryBlock 
                     cityId={cityId} 
                     convertToFahrengeit={convertToFahrengeit} 
                     tempMeasure={tempMeasure} 
-                    setTempMeasure={setTempMeasure}/>
+                    setTempMeasure={setTempMeasure}
+                    />
             </QueryClientProvider>
         </div>   
     )

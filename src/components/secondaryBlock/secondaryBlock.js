@@ -9,9 +9,8 @@ import Spinner from "../spinner/Spinner";
 
 const SecondaryBlock = ({cityId, tempMeasure, setTempMeasure, convertToFahrengeit}) => {
 
-    const { isLoading, data, isFetching, isError, isSuccess } = useQuery(["forecast", cityId],  () =>
-    fetch(`https://aqueous-escarpment-53635.herokuapp.com/https://www.metaweather.com/api/location/${cityId}/`).then((res) => res.json()).then(res => _transformData(res)));  
-
+    const { isLoading, data, isIdle, isError, isSuccess, isFetching } = useQuery(["forecast", cityId],  () =>
+    fetch(`https://aqueous-escarpment-53635.herokuapp.com/https://www.metaweather.com/api/location/${cityId}/`).then((res) => res.json()).then(res => _transformData(res)), {enabled: cityId !== undefined});  
     const _transformData = (data) => {
         return {
             weather: data.consolidated_weather.slice(1),
@@ -26,8 +25,8 @@ const SecondaryBlock = ({cityId, tempMeasure, setTempMeasure, convertToFahrengei
             }
         }
     }
-
-    if(isLoading) return <Spinner/>
+    
+    if(isLoading || isIdle || isFetching) return <Spinner/>
     if(isSuccess) console.log(data)
     return(
         <div className="secondary__block">

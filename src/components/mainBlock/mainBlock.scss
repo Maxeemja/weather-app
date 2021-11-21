@@ -1,5 +1,9 @@
 .main__block {
     background: #1E213A;
-    width: 460px;
     padding: 42px 0 52px 0;
+    min-height: 920px;
+    &-sizing {
+        height: 100vh;
+        width: 460px;
+    }
 }

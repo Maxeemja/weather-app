@@ -10,11 +10,11 @@ const SearchMenu = ({setCity, toggleTabs}) => {
         e.preventDefault();
         setSearchWord(e.target.cityName.value);
         e.target.reset();
-        toggleIco()
+        toggleIco();
     }
 
     const { isLoading, data, isFetching, isSuccess, isError } = useQuery(["cities", searchWord],  () =>
-    fetch(`https://aqueous-escarpment-53635.herokuapp.com/https://www.metaweather.com/api/location/search/?query=${searchWord}`).then((res) => res.json()), {enabled: searchWord.length > 0})
+    fetch(`https://aqueous-escarpment-53635.herokuapp.com/https://www.metaweather.com/api/location/search/?query=${searchWord}`).then((res) => res.json()), {enabled: searchWord.length > 0});
     
     const toggleIco = () => {
         let inputValue = document.querySelector('.search-form > input').value;    
