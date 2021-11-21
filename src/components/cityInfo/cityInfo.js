@@ -1,5 +1,5 @@
 import { useQuery } from 'react-query';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Spinner from '../spinner/Spinner';
 import useGetDate from '../../hooks/useGetDate';
 
@@ -11,11 +11,13 @@ import location_img from '../../assets/loc.png';
 const CityInfo = ({toggleTabs, cityId, tempMeasure, convertToFahrengeit, setCity}) => {
     // Kiev - 924938
     const [location, setLocation] = useState();
+    useEffect(() => {
+        navigator.geolocation.getCurrentPosition(
+            (data) => setLocation({latt: data.coords.latitude, long: data.coords.longitude}),
+            () => setCity(city => city === undefined ? 924938 : undefined) // setting default
+        );
+    }, [])
     
-    navigator.geolocation.getCurrentPosition(
-        (data) => setLocation({latt: data.coords.latitude, long: data.coords.longitude}),
-        () => setCity(924938) // setting default
-    );
 
     const locationQuery = useQuery(["location", location],  () =>
     fetch(`https://aqueous-escarpment-53635.herokuapp.com/https://www.metaweather.com/api/location/search/?lattlong=${location.latt},${location.long}`).then((res) => res.json()).then((res) => setCity(res[0].woeid)), {enabled: location !== undefined});
